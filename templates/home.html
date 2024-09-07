@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<section class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        {% for movie in Kinolar %}
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden" href="{% url 'detail' movie.id %}">
+            <img alt="Bul jerde foto bar" class="object-cover object-center w-full h-full block" src="{{movie.image.url}}">
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">FILM</h3>
+            <a href="{% url 'detail' movie.id %}"><h2 class="text-white title-font text-lg font-medium">{{movie.title}}</h2></a>
+            <p class="mt-1">{{movie.published_date}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
